@@ -2,7 +2,7 @@
     min-height: 237px;
     max-height: 237px;
     min-width: 45%;
-    max-width: 50%;
+    max-width: 55%;
     font-family: 'Song Myung', serif;
     overflow: auto;
     overflow-x: hidden;
@@ -10,7 +10,7 @@
     border-style: double; 
     border-radius: 4px;
     top: 128px;
-    left: 570px;
+    left: 530px;
     right: 0;
     margin: 0 auto;
 }
@@ -22,5 +22,5 @@
 
 .columns {
     background: #FFF;
-    text-align: center;  
+    text-align: center;
 }

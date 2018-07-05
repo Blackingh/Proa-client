@@ -40,7 +40,7 @@ input[type=text]{
   /* Floating column for labels: 25% width */
   .col-25 {
     float: left;
-    width: 22%;
+    width: 20%;
     margin-top: 6px;
     opacity: none;
   }
@@ -62,4 +62,7 @@ input[type=text]{
       width: 100%;
       margin-top: 0;
     }
+  }
+  .hidden { 
+    display:none; 
   }

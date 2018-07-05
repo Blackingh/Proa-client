@@ -34,7 +34,7 @@ export const getAllObjects = async function(url){
         let response = await fetch(`http://localhost:8080${url.url}`, {
             method: 'GET'
         });
-        var objectJsonList = await response.json();
+        let objectJsonList = await response.json();
         return objectJsonList;
     } catch (error) {
         console.log(error);
@@ -51,8 +51,8 @@ export const putObject = async function(url,data){
                 'Content-Type': 'application/json'
             }
         });
-        let menssageJson = await response.statusText;
-        console.log(menssageJson);
+        let objectJsonList = await response.json();
+        return objectJsonList;
     } catch (error) {
         console.log(error);
     }

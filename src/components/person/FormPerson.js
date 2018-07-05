@@ -15,6 +15,12 @@ class FormPerson extends Component {
 
     }
 
+    handlePersonEdited = (e) => {
+        e.preventDefault();
+        this.props.personEdited(this.state);
+    }
+
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.onAddPerson(this.state);
@@ -33,7 +39,15 @@ class FormPerson extends Component {
             [name]: value
         });
     }
-
+    componentWillReceiveProps() {
+        var oldPerson = this.props.personEdit;
+        this.setState({
+            identification: oldPerson.identification,
+            name: oldPerson.name,
+            lastName: oldPerson.lastName,
+            age: oldPerson.age,
+        })
+    }
     render() {
         return (
             <div className="container card">
@@ -45,6 +59,7 @@ class FormPerson extends Component {
                         <div className="col-25">
                             <input
                                 type="text"
+                                disabled={!this.props.personEdit.isDisableId}
                                 name="identification"
                                 className="form-control "
                                 value={this.state.identification}
@@ -109,8 +124,11 @@ class FormPerson extends Component {
                             }
                         </div>
                         <div className="col-25">
-                            <button type="submit" className="button">
+                            <button type="submit" className={!this.props.personEdit.isDisableId ? 'hidden' : 'button'}>
                                 <strong>Guardar</strong>
+                            </button>
+                            <button  className={this.props.personEdit.isDisableId ? 'hidden' : 'button'} onClick={this.handlePersonEdited}>
+                                <strong>Actualizar</strong>
                             </button>
                         </div>
                     </div>

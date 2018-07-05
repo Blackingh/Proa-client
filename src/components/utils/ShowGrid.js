@@ -6,19 +6,19 @@ import PropTypes from 'prop-types';
 import '../css/ShowGrid.css'
 
 class ShowGrid extends Component {
-
-    constructor(props) {
-        super(props);
+    
+    handleInputEdit = (item) => {
+        this.props.onEditPerson(item);
     }
 
     render() {
         const { list } = this.props;
-        console.log(list);
         var keys = list.length > 0 ? Object.keys(list[0]) : [];
         return (
             <div className="table-grid">
                 <div className="row">
                     {keys.map((head, i) => <div key={i} className="col headers border"><strong>{head}</strong></div>)}
+                    <div key="Actions" className="col headers border"><strong>Acciones</strong></div>
                 </div>
                 {list.map((item) => {
                     return (
@@ -30,6 +30,16 @@ class ShowGrid extends Component {
                                     )
                                 })
                             }
+                            <div className="col columns border pb-2 pt-2 card">
+                                <div className="row">
+                                    <div className="col columns pb-2 pt-2 card" onClick={() => { this.handleInputEdit(item) }}>
+                                        <i className="far fa-edit"></i>
+                                    </div>
+                                    <div className="col columns pb-2 pt-2 card">
+                                        <i className="far fa-trash-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div >
                     )
                 }
