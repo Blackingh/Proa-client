@@ -1,0 +1,9 @@
+.table-grid{
+    min-height: 200px;
+    max-height: 250px;
+    overflow: scroll;
+}
+
+.header {
+    position: fixed; 
+}

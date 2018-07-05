@@ -1,0 +1,23 @@
+import React, { Component } from 'react';
+//import logo from './logo.svg';
+import './App.css';
+
+/**
+ * Componentes
+ */
+import PersonContainer from './components/person/PersonContainer';
+
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <div className="Container">
+          <PersonContainer/>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
