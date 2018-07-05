@@ -16,9 +16,9 @@ class ShowGrid extends Component {
         console.log(list);
         var keys = list.length > 0 ? Object.keys(list[0]) : [];
         return (
-            <div className="table-grid container card d-inline-block w-75">
+            <div className="table-grid">
                 <div className="row">
-                    {keys.map((head, i) => <div key={i} className="col pt-1 pb-1 border bg-primary text-white ">{head}</div>)}
+                    {keys.map((head, i) => <div key={i} className="col headers border"><strong>{head}</strong></div>)}
                 </div>
                 {list.map((item) => {
                     return (
@@ -26,7 +26,7 @@ class ShowGrid extends Component {
                             {
                                 keys.map((key, i) => {
                                     return (
-                                        <div key={i} className="col pt-2 pb-2 border border-secondary">{item[key]}</div>
+                                        <div key={i} className="col columns border pb-2 pt-2 card">{item[key]}</div>
                                     )
                                 })
                             }
