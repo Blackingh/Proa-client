@@ -10,7 +10,7 @@ class FormPerson extends Component {
             identification: 0,
             name: '',
             lastName: '',
-            age: 0,
+            age: 0
         };
 
     }
@@ -24,12 +24,6 @@ class FormPerson extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.onAddPerson(this.state);
-        this.setState({
-            identification: 0,
-            name: '',
-            lastName: '',
-            age: 0,
-        });
     }
 
     handleInputChange = (e) => {

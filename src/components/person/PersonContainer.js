@@ -3,7 +3,6 @@ import { getAllObjects, postObject, putObject } from '../utils/fuctionsCrud';
 import FormPerson from './FormPerson';
 import ShowGrid from '../utils/ShowGrid';
 class PersonContainer extends Component {
-
     constructor() {
         super();
         this.state = {
@@ -15,8 +14,8 @@ class PersonContainer extends Component {
             isDisableId: true
         };
         this.handleAddPerson = this.handleAddPerson.bind(this);
-        this.handleEditPerson = this.handleEditPerson.bind(this);
         this.handlePersonEdited = this.handlePersonEdited.bind(this);
+        this.handleEditPerson = this.handleEditPerson.bind(this);
     }
 
     async handleAddPerson(object) {
@@ -28,7 +27,8 @@ class PersonContainer extends Component {
         this.setState({ personList: newPersonList });
         alert('Se ha registrado a la persona');
     }
-    handleEditPerson(object) {
+
+    async handleEditPerson(object) {
         this.setState({
             identification: object.identification,
             name: object.name,
@@ -36,23 +36,16 @@ class PersonContainer extends Component {
             age: object.age,
             isDisableId: false
         })
-        
     }
-    async handlePersonEdited(object){
-        const url ={ url:'/person/', id: object.identification};
-        let newPerson = await putObject(url,object);
+    async handlePersonEdited(object) {
+        const url = { url: '/person/', id: object.identification };
+        let newPerson = await putObject(url, object);
         console.log(newPerson);
-        let index = await this.state.personList.findIndex(person =>  person.identification === object.identification)
+        let index = await this.state.personList.findIndex(person => person.identification === object.identification)
         this.state.personList[index] = object;
-        this.setState({ 
-            isDisableId: true,
-            identification: 0,
-            name: '',
-            lastName: '',
-            age: 0,
-        });
+        this.setState({isDisableId: true});
     }
-    async componentWillMount() {
+    async componentDidMount() {
         const url = { url: '/person/' };
         const array = await getAllObjects(url);
         this.setState({ personList: array });

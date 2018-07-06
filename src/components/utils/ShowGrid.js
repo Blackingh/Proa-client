@@ -7,8 +7,20 @@ import '../css/ShowGrid.css'
 
 class ShowGrid extends Component {
     
+    constructor(){
+        super();
+        this.state = {
+            identification: 0,
+            name: '',
+            lastName: '',
+            age: 0,
+        }
+    }
+
+
     handleInputEdit = (item) => {
-        this.props.onEditPerson(item);
+        this.state = item;
+        this.props.onEditPerson(this.state);
     }
 
     render() {
