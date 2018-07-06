@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getAllObjects, postObject, putObject } from '../utils/fuctionsCrud';
+import { getAllObjects, postObject, putObject , deleteObject } from '../utils/fuctionsCrud';
 import FormPerson from './FormPerson';
 import ShowGrid from '../utils/ShowGrid';
 class PersonContainer extends Component {
@@ -14,14 +14,14 @@ class PersonContainer extends Component {
             isDisableId: true
         };
         this.handleAddPerson = this.handleAddPerson.bind(this);
-        this.handlePersonEdited = this.handlePersonEdited.bind(this);
-        this.handleEditPerson = this.handleEditPerson.bind(this);
+        this.handlePersonEdit = this.handlePersonEdit.bind(this);
+        this.editRowPerson = this.editRowPerson.bind(this);
+        this.deletRowPerson =this.deletRowPerson.bind(this);
     }
-
     async handleAddPerson() {
         console.log(this.state.personList)
         //se crea un objeto local que se va a mandar al endPoint
-        let object ={
+        let object = {
             identification: this.state.identification,
             name: this.state.name,
             lastName: this.state.lastName,
@@ -36,7 +36,7 @@ class PersonContainer extends Component {
         this.defaultValues();
     }
 
-    defaultValues = () =>{
+    defaultValues = () => {
         this.setState({
             identification: 0,
             name: '',
@@ -46,7 +46,7 @@ class PersonContainer extends Component {
         })
     }
 
-    async handleEditPerson(object) {
+    editRowPerson(object) {
         this.setState({
             identification: object.identification,
             name: object.name,
@@ -55,9 +55,18 @@ class PersonContainer extends Component {
             isDisableId: false
         })
     }
-    async handlePersonEdited() {
+
+    async deletRowPerson(object){
+        const url = { url: '/person/', id: object.identification };
+        await deleteObject(url);
+        let index = await this.state.personList.findIndex(person => person.identification === object.identification)
+        this.state.personList.splice(index,1);
+        this.defaultValues();       
+    }
+
+    async handlePersonEdit() {
         //se crea un objeto local que se va a mandar al endPoint
-        let object ={
+        let object = {
             identification: this.state.identification,
             name: this.state.name,
             lastName: this.state.lastName,
@@ -68,7 +77,7 @@ class PersonContainer extends Component {
         console.log(newPerson);
         let index = await this.state.personList.findIndex(person => person.identification === object.identification)
         this.state.personList[index] = object;
-        this.setState({isDisableId: true});
+        this.setState({ isDisableId: true });
         //Reestablece los datos predeterminados
         this.defaultValues();
     }
@@ -77,9 +86,7 @@ class PersonContainer extends Component {
         const array = await getAllObjects(url);
         this.setState({ personList: array });
     }
-
     //Fromulario
-
     handleInputChange = (e) => {
         const { value, name } = e.target;
         console.log(value, name);
@@ -87,20 +94,20 @@ class PersonContainer extends Component {
             [name]: value
         });
     }
-
-
     render() {
-
-
         return (
             <div className="PersonContainer">
                 <FormPerson
                     onAddPerson={this.handleAddPerson}
-                    personEdit={this.state}
-                    personEdited={this.handlePersonEdited}
-                    event={this.handleInputChange}
+                    personInpuntEdit={this.state}
+                    onGetPersonToEdit={this.handlePersonEdit}
+                    onGetEventRowForm={this.handleInputChange}
                 />
-                <ShowGrid list={this.state.personList} onEditPerson={this.handleEditPerson} />
+                <ShowGrid
+                    list={this.state.personList}
+                    onEditRowPerson={this.editRowPerson}
+                    onDeleteRowPerson={this.deletRowPerson}
+                />
             </div>
         );
     }

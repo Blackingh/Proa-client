@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import './css/fromPerson.css';
 
 class FormPerson extends Component {
-    
-    handlePersonEdited = (e) => {
+
+    handlePersonEdit = (e) => {
         e.preventDefault();
-        this.props.personEdited();
+        this.props.onGetPersonToEdit();
     }
 
 
@@ -15,7 +15,7 @@ class FormPerson extends Component {
         this.props.onAddPerson();
     }
 
-    
+
     render() {
         return (
             <div className="container card">
@@ -27,11 +27,11 @@ class FormPerson extends Component {
                         <div className="col-25">
                             <input
                                 type="text"
-                                disabled={!this.props.personEdit.isDisableId}
+                                disabled={!this.props.personInpuntEdit.isDisableId}
                                 name="identification"
                                 className="form-control "
-                                value={this.props.personEdit.identification}
-                                onChange={this.props.event}
+                                value={this.props.personInpuntEdit.identification}
+                                onChange={this.props.onGetEventRowForm}
                                 placeholder="Cedula"
                                 autoComplete="off"
                             />
@@ -46,8 +46,8 @@ class FormPerson extends Component {
                                 type="text"
                                 name="name"
                                 className="form-control "
-                                value={this.props.personEdit.name}
-                                onChange={this.props.event}
+                                value={this.props.personInpuntEdit.name}
+                                onChange={this.props.onGetEventRowForm}
                                 placeholder="Nombre"
                                 autoComplete="off"
                             />
@@ -62,8 +62,8 @@ class FormPerson extends Component {
                                 type="text"
                                 name="lastName"
                                 className="form-control "
-                                value={this.props.personEdit.lastName}
-                                onChange={this.props.event}
+                                value={this.props.personInpuntEdit.lastName}
+                                onChange={this.props.onGetEventRowForm}
                                 placeholder="Primer Apellido"
                                 autoComplete="off"
                             />
@@ -78,8 +78,8 @@ class FormPerson extends Component {
                                 type="text"
                                 name="age"
                                 className="form-control "
-                                value={this.props.personEdit.age}
-                                onChange={this.props.event}
+                                value={this.props.personInpuntEdit.age}
+                                onChange={this.props.onGetEventRowForm}
                                 placeholder="Edad"
                                 autoComplete="off"
                             />
@@ -93,13 +93,13 @@ class FormPerson extends Component {
                         </div>
                         <div className="col-25">
                             {
-                                this.props.personEdit.isDisableId
+                                this.props.personInpuntEdit.isDisableId
                                     ?
                                     <button type="submit" className='button'>
                                         <strong>Guardar</strong>
                                     </button>
                                     :
-                                    <button className='button' onClick={this.handlePersonEdited}>
+                                    <button className='button' onClick={this.handlePersonEdit}>
                                         <strong>Actualizar</strong>
                                     </button>
                             }

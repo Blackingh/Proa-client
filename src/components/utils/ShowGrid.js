@@ -6,9 +6,15 @@ import PropTypes from 'prop-types';
 import '../css/ShowGrid.css'
 
 class ShowGrid extends Component {
-    
+
     handleInputEdit = (item) => {
-        this.props.onEditPerson(item);
+        this.props.onEditRowPerson(item);
+    }
+
+    handleInputDelete = (item) => {
+        if (window.confirm('¿Estas seguro de querer eliminar a la persona?')){
+            this.props.onDeleteRowPerson(item);
+        }
     }
 
     render() {
@@ -35,7 +41,7 @@ class ShowGrid extends Component {
                                     <div className="col columns pb-2 pt-2 card" onClick={() => { this.handleInputEdit(item) }}>
                                         <i className="far fa-edit"></i>
                                     </div>
-                                    <div className="col columns pb-2 pt-2 card">
+                                    <div className="col columns pb-2 pt-2 card" onClick={() => { this.handleInputDelete(item) }}>
                                         <i className="far fa-trash-alt"></i>
                                     </div>
                                 </div>
