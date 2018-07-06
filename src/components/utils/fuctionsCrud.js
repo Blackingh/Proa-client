@@ -1,8 +1,9 @@
 
+const localHost = 'http://localhost:8080';
 
 export const postObject = async function(url,data){
     try {
-        let response = await fetch(`http://localhost:8080${url.url}`, {
+        let response = await fetch(`${localHost}${url.url}`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -19,7 +20,7 @@ export const postObject = async function(url,data){
 
 export const getIdObject = async function(url){ //Se espera una url con 
     try {
-        let response = await fetch(`http://localhost:8080${url.url}${url.id}`, {
+        let response = await fetch(`${localHost}${url.url}${url.id}`, {
             method: 'GET'
         });
         let objectJson = await response.json();
@@ -31,7 +32,7 @@ export const getIdObject = async function(url){ //Se espera una url con
 
 export const getAllObjects = async function(url){
     try {
-        let response = await fetch(`http://localhost:8080${url.url}`, {
+        let response = await fetch(`${localHost}${url.url}`, {
             method: 'GET'
         });
         let objectJsonList = await response.json();
@@ -43,7 +44,7 @@ export const getAllObjects = async function(url){
 
 export const putObject = async function(url,data){
     try {
-        let response = await fetch(`http://localhost:8080${url.url}${url.id}`, {
+        let response = await fetch(`${localHost}${url.url}${url.id}`, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: {
@@ -60,7 +61,7 @@ export const putObject = async function(url,data){
 
 export const deleteObject = async function(url){
     try {
-        let response = await fetch(`http://localhost:8080${url.url}${url.id}`, {
+        let response = await fetch(`${localHost}${url.url}${url.id}`, {
             method: 'DELETE',
         });
         let menssageJson = await response.statusText;

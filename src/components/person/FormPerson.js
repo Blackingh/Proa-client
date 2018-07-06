@@ -3,49 +3,19 @@ import React, { Component } from 'react';
 import './css/fromPerson.css';
 
 class FormPerson extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            identification: 0,
-            name: '',
-            lastName: '',
-            age: 0
-        };
-
-    }
-
+    
     handlePersonEdited = (e) => {
         e.preventDefault();
-        this.props.personEdited(this.state);
-        this.setState({
-            identification: 0,
-            name: '',
-            lastName: '',
-            age: 0
-        })
+        this.props.personEdited();
     }
 
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.onAddPerson(this.state);
-        this.setState({
-            identification: 0,
-            name: '',
-            lastName: '',
-            age: 0
-        })
+        this.props.onAddPerson();
     }
 
-    handleInputChange = (e) => {
-        const { value, name } = e.target;
-        console.log(value, name);
-        this.setState({
-            [name]: value
-        });
-    }
-
+    
     render() {
         return (
             <div className="container card">
@@ -61,7 +31,7 @@ class FormPerson extends Component {
                                 name="identification"
                                 className="form-control "
                                 value={this.props.personEdit.identification}
-                                onChange={this.handleInputChange}
+                                onChange={this.props.event}
                                 placeholder="Cedula"
                                 autoComplete="off"
                             />
@@ -77,7 +47,7 @@ class FormPerson extends Component {
                                 name="name"
                                 className="form-control "
                                 value={this.props.personEdit.name}
-                                onChange={this.handleInputChange}
+                                onChange={this.props.event}
                                 placeholder="Nombre"
                                 autoComplete="off"
                             />
@@ -93,7 +63,7 @@ class FormPerson extends Component {
                                 name="lastName"
                                 className="form-control "
                                 value={this.props.personEdit.lastName}
-                                onChange={this.handleInputChange}
+                                onChange={this.props.event}
                                 placeholder="Primer Apellido"
                                 autoComplete="off"
                             />
@@ -109,7 +79,7 @@ class FormPerson extends Component {
                                 name="age"
                                 className="form-control "
                                 value={this.props.personEdit.age}
-                                onChange={this.handleInputChange}
+                                onChange={this.props.event}
                                 placeholder="Edad"
                                 autoComplete="off"
                             />
