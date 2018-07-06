@@ -18,6 +18,12 @@ class FormPerson extends Component {
     handlePersonEdited = (e) => {
         e.preventDefault();
         this.props.personEdited(this.state);
+        this.setState({
+            identification: 0,
+            name: '',
+            lastName: '',
+            age: 0
+        })
     }
 
 
@@ -39,16 +45,7 @@ class FormPerson extends Component {
             [name]: value
         });
     }
-    
-    componentWillReceiveProps() {
-        var oldPerson = this.props.personEdit;
-        this.setState({
-            identification: oldPerson.identification,
-            name: oldPerson.name,
-            lastName: oldPerson.lastName,
-            age: oldPerson.age,
-        })
-    }
+
     render() {
         return (
             <div className="container card">
@@ -63,7 +60,7 @@ class FormPerson extends Component {
                                 disabled={!this.props.personEdit.isDisableId}
                                 name="identification"
                                 className="form-control "
-                                value={this.state.identification}
+                                value={this.props.personEdit.identification}
                                 onChange={this.handleInputChange}
                                 placeholder="Cedula"
                                 autoComplete="off"
@@ -79,7 +76,7 @@ class FormPerson extends Component {
                                 type="text"
                                 name="name"
                                 className="form-control "
-                                value={this.state.name}
+                                value={this.props.personEdit.name}
                                 onChange={this.handleInputChange}
                                 placeholder="Nombre"
                                 autoComplete="off"
@@ -95,7 +92,7 @@ class FormPerson extends Component {
                                 type="text"
                                 name="lastName"
                                 className="form-control "
-                                value={this.state.lastName}
+                                value={this.props.personEdit.lastName}
                                 onChange={this.handleInputChange}
                                 placeholder="Primer Apellido"
                                 autoComplete="off"
@@ -111,7 +108,7 @@ class FormPerson extends Component {
                                 type="text"
                                 name="age"
                                 className="form-control "
-                                value={this.state.age}
+                                value={this.props.personEdit.age}
                                 onChange={this.handleInputChange}
                                 placeholder="Edad"
                                 autoComplete="off"
@@ -121,7 +118,7 @@ class FormPerson extends Component {
                     <div className="row">
                         <div className="col-25">
                             {
-                                //Acomoda el boton 
+                                //Acomoda el boton
                             }
                         </div>
                         <div className="col-25">
