@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import { getAllObjects, postObject, putObject , deleteObject } from '../utils/fuctionsCrud';
+import { getAllObjects, postObject, putObject, deleteObject } from '../utils/fuctionsCrud';
 import FormPerson from './FormPerson';
 import ShowGrid from '../utils/ShowGrid';
+
+import './css/PersonContainer.css';
 class PersonContainer extends Component {
     constructor() {
         super();
         this.state = {
             personList: [],
-            identification: 0,
+            identification: '',
             name: '',
             lastName: '',
-            age: 0,
+            age: '',
             isDisableId: true
         };
         this.handleAddPerson = this.handleAddPerson.bind(this);
         this.handlePersonEdit = this.handlePersonEdit.bind(this);
         this.editRowPerson = this.editRowPerson.bind(this);
-        this.deletRowPerson =this.deletRowPerson.bind(this);
+        this.deletRowPerson = this.deletRowPerson.bind(this);
     }
     async handleAddPerson() {
         console.log(this.state.personList)
@@ -38,10 +40,10 @@ class PersonContainer extends Component {
 
     defaultValues = () => {
         this.setState({
-            identification: 0,
+            identification: '',
             name: '',
             lastName: '',
-            age: 0,
+            age: '',
             isDisableId: true
         })
     }
@@ -56,12 +58,12 @@ class PersonContainer extends Component {
         })
     }
 
-    async deletRowPerson(object){
+    async deletRowPerson(object) {
         const url = { url: '/person/', id: object.identification };
         await deleteObject(url);
         let index = await this.state.personList.findIndex(person => person.identification === object.identification)
-        this.state.personList.splice(index,1);
-        this.defaultValues();       
+        this.state.personList.splice(index, 1);
+        this.defaultValues();
     }
 
     async handlePersonEdit() {
@@ -96,18 +98,24 @@ class PersonContainer extends Component {
     }
     render() {
         return (
-            <div className="PersonContainer">
-                <FormPerson
-                    onAddPerson={this.handleAddPerson}
-                    personInpuntEdit={this.state}
-                    onGetPersonToEdit={this.handlePersonEdit}
-                    onGetEventRowForm={this.handleInputChange}
-                />
-                <ShowGrid
-                    list={this.state.personList}
-                    onEditRowPerson={this.editRowPerson}
-                    onDeleteRowPerson={this.deletRowPerson}
-                />
+            <div className="container">
+                <div className="row justify-content-md-center">
+                    <div className="col">
+                        <FormPerson
+                            onAddPerson={this.handleAddPerson}
+                            personInpuntEdit={this.state}
+                            onGetPersonToEdit={this.handlePersonEdit}
+                            onGetEventRowForm={this.handleInputChange}
+                        />
+                    </div>
+                    <div className="col">
+                        <ShowGrid
+                            list={this.state.personList}
+                            onEditRowPerson={this.editRowPerson}
+                            onDeleteRowPerson={this.deletRowPerson}
+                        />
+                    </div>
+                </div>
             </div>
         );
     }

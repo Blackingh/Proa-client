@@ -1,18 +1,13 @@
 .table-grid{
-    min-height: 237px;
-    max-height: 237px;
-    min-width: 45%;
-    max-width: 55%;
+    min-width: 730px;
+    max-width: 60%;
+    max-height: 241px;
     font-family: 'Song Myung', serif;
-    overflow: auto;
+    overflow: scroll;
     overflow-x: hidden;
-    position: absolute;
-    border-style: double; 
+    box-sizing: border-box;
     border-radius: 4px;
-    top: 128px;
-    left: 520px;
-    right: 0;
-    margin: 0 auto;
+    padding: 0 15px 0 10px
 }
 .headers {
     background: #5E574D;

@@ -1,0 +1,16 @@
+.container {
+    margin-top: 10%;
+    border-radius: 5px;
+    background-color:rgba(242, 242, 242, 0.9);
+    padding: 20px;
+    max-width: 90%;
+    font-family: 'Song Myung', serif;
+    overflow: hidden;
+    top: 100px;
+    display: inline-block;
+  }
+
+  .ancho {
+      max-width: 50%;
+
+  }

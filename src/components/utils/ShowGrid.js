@@ -23,7 +23,8 @@ class ShowGrid extends Component {
         return (
             <div className="table-grid">
                 <div className="row">
-                    {keys.map((head, i) => <div key={i} className="col headers border"><strong>{head}</strong></div>)}
+                    {keys.map((head, i) => <div key={i} className="col headers border"><strong>{head}</strong></div>)
+                }
                     <div key="Actions" className="col headers border"><strong>Acciones</strong></div>
                 </div>
                 {list.map((item) => {
@@ -32,7 +33,7 @@ class ShowGrid extends Component {
                             {
                                 keys.map((key, i) => {
                                     return (
-                                        <div key={i} className="col columns border pb-2 pt-2 card">{item[key]}</div>
+                                        <div key={i} className="col columns border pb-2 pt-2 card aline">{item[key]}</div>
                                     )
                                 })
                             }

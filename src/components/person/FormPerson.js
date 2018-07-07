@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './css/fromPerson.css';
+import './css/FromPerson.css';
 
 class FormPerson extends Component {
 
@@ -18,7 +18,6 @@ class FormPerson extends Component {
 
     render() {
         return (
-            <div className="container card">
                 <form onSubmit={this.handleSubmit}>
                     <div className="row">
                         <div className="col-25">
@@ -34,6 +33,7 @@ class FormPerson extends Component {
                                 onChange={this.props.onGetEventRowForm}
                                 placeholder="Cedula"
                                 autoComplete="off"
+                                required
                             />
                         </div>
                     </div>
@@ -50,6 +50,7 @@ class FormPerson extends Component {
                                 onChange={this.props.onGetEventRowForm}
                                 placeholder="Nombre"
                                 autoComplete="off"
+                                required
                             />
                         </div>
                     </div>
@@ -66,6 +67,7 @@ class FormPerson extends Component {
                                 onChange={this.props.onGetEventRowForm}
                                 placeholder="Primer Apellido"
                                 autoComplete="off"
+                                required
                             />
                         </div>
                     </div>
@@ -82,6 +84,7 @@ class FormPerson extends Component {
                                 onChange={this.props.onGetEventRowForm}
                                 placeholder="Edad"
                                 autoComplete="off"
+                                required
                             />
                         </div>
                     </div>
@@ -95,18 +98,17 @@ class FormPerson extends Component {
                             {
                                 this.props.personInpuntEdit.isDisableId
                                     ?
-                                    <button type="submit" className='button'>
+                                    <button type="submit" className='button border'>
                                         <strong>Guardar</strong>
                                     </button>
                                     :
-                                    <button className='button' onClick={this.handlePersonEdit}>
+                                    <button className='button border' onClick={this.handlePersonEdit}>
                                         <strong>Actualizar</strong>
                                     </button>
                             }
                         </div>
                     </div>
                 </form>
-            </div>
         );
     }
 }

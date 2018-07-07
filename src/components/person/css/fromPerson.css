@@ -26,21 +26,12 @@ input[type=text]{
   }
   
   /* Style the container */
-  .container {
-    border-radius: 5px;
-    background-color:rgba(242, 242, 242, 0.9);
-    padding: 20px;
-    max-width: 95%;
-    max-height: 50%;
-    font-family: 'Song Myung', serif;
-    position: relative;
-    top: 100px;
-  }
+  
   
   /* Floating column for labels: 25% width */
   .col-25 {
     float: left;
-    width: 20%;
+    width: 50%;
     margin-top: 6px;
     opacity: none;
   }
