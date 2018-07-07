@@ -1,0 +1,36 @@
+.Menu {
+    margin: 0 auto;
+    margin-left: 70px;
+}
+
+.Menu ul {
+    color: white;
+    margin-top: 10px;
+    background-color: #0084ff;
+    list-style: none;
+    margin: 0px;    
+    padding: 0px;
+    margin: 20px 0px 20px;
+    border: 0.1px solid;
+    border-radius: 5px;
+    width: 94.5%;
+}
+
+.Menu ul li {
+    display: inline-block;
+}
+
+.Menu ul li a {
+    color: white;
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.Menu ul li a:hover {
+    background-color: #f57d00;
+}
+
+.title {
+    padding-top: 10px;
+}

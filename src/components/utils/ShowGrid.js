@@ -8,12 +8,12 @@ import '../css/ShowGrid.css'
 class ShowGrid extends Component {
 
     handleInputEdit = (item) => {
-        this.props.onEditRowPerson(item);
+        this.props.onEditRow(item);
     }
 
     handleInputDelete = (item) => {
         if (window.confirm('¿Estas seguro de querer eliminar a la persona?')){
-            this.props.onDeleteRowPerson(item);
+            this.props.onDeleteRow(item);
         }
     }
 
@@ -22,10 +22,10 @@ class ShowGrid extends Component {
         var keys = list.length > 0 ? Object.keys(list[0]) : [];
         return (
             <div className="table-grid">
-                <div className="row">
-                    {keys.map((head, i) => <div key={i} className="col headers border"><strong>{head}</strong></div>)
+                <div className="row header-table">
+                    {keys.map((head, i) => <div key={i} className="col headers border">{head}</div>)
                 }
-                    <div key="Actions" className="col headers border"><strong>Acciones</strong></div>
+                    <div key="Actions" className="col headers border">Acciones</div>
                 </div>
                 {list.map((item) => {
                     return (

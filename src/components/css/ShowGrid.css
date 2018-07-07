@@ -7,10 +7,10 @@
     overflow-x: hidden;
     box-sizing: border-box;
     border-radius: 4px;
-    padding: 0 15px 0 10px
+    padding: 0px 15px 0px 10px;
 }
 .headers {
-    background: #5E574D;
+    background: #131418;
     padding: 12px 20px 12px 25px;
     color: white;
 }

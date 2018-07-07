@@ -99,11 +99,11 @@ class FormPerson extends Component {
                                 this.props.personInpuntEdit.isDisableId
                                     ?
                                     <button type="submit" className='button border'>
-                                        <strong>Guardar</strong>
+                                        Guardar
                                     </button>
                                     :
                                     <button className='button border' onClick={this.handlePersonEdit}>
-                                        <strong>Actualizar</strong>
+                                        Actualizar
                                     </button>
                             }
                         </div>

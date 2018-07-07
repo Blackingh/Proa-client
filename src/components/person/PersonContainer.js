@@ -98,7 +98,7 @@ class PersonContainer extends Component {
     }
     render() {
         return (
-            <div className="container">
+            <div className="personContainer">
                 <div className="row justify-content-md-center">
                     <div className="col">
                         <FormPerson
@@ -111,8 +111,8 @@ class PersonContainer extends Component {
                     <div className="col">
                         <ShowGrid
                             list={this.state.personList}
-                            onEditRowPerson={this.editRowPerson}
-                            onDeleteRowPerson={this.deletRowPerson}
+                            onEditRow={this.editRowPerson}
+                            onDeleteRow={this.deletRowPerson}
                         />
                     </div>
                 </div>

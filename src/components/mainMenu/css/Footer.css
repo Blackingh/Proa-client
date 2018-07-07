@@ -1,0 +1,14 @@
+.Footer {
+  margin: 20px 70px auto;
+  color: white;
+  text-align: center;
+  width: 90%;
+  padding: 20px 10px 10px 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  max-height: 100%;
+  vertical-align: middle;
+  background-color: #131418;
+  bottom: 0%;
+  position: fixed;
+}
