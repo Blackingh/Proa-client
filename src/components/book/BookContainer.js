@@ -12,10 +12,14 @@ class BookContainer extends Component {
             id: '',
             title: '',
             author: '',
+            url: {
+                url: '/book/',
+                id: ''
+            },
             isDisableId: true
         };
         this.handleAddBook = this.handleAddBook.bind(this);
-        this.handleBookEdit = this.handleBookEdit.bind(this);4
+        this.handleBookEdit = this.handleBookEdit.bind(this);
         this.editRowBook = this.editRowBook.bind(this);
         this.deletRowBook = this.deletRowBook.bind(this);
     }
@@ -26,8 +30,7 @@ class BookContainer extends Component {
             title: this.state.title,
             author: this.state.author,
         }
-        const url = { url: '/book/' };
-        const book = await postObject(url, object);
+        const book = await postObject(this.state.url.url, object);
         let newBookList = this.state.bookList;
         newBookList.push(book);
         this.setState({ bookList: newBookList });
@@ -54,8 +57,8 @@ class BookContainer extends Component {
     }
 
     async deletRowBook(object) {
-        const url = { url: '/book/', id: object.id };
-        await deleteObject(url);
+        this.setState({id: object.id})
+        await deleteObject(this.state.url);
         let index = await this.state.bookList.findIndex(book => book.id === object.id)
         this.state.bookList.splice(index, 1);
         this.defaultValues();
@@ -68,8 +71,8 @@ class BookContainer extends Component {
             title: this.state.title,
             author: this.state.author,
         }
-        const url = { url: '/book/', id: object.id };
-        let newBook = await putObject(url, object);
+        this.setState({id: object.id})
+        let newBook = await putObject(this.state.url, object);
         console.log(newBook);//revisar
         let index = await this.state.bookList.findIndex(book => book.id === object.id)
         this.state.bookList[index] = object;
@@ -78,8 +81,7 @@ class BookContainer extends Component {
         this.defaultValues();
     }
     async componentDidMount() {
-        const url = { url: '/book/' };
-        const array = await getAllObjects(url);
+        const array = await getAllObjects(this.state.url);
         this.setState({ bookList: array });
     }
     //Fromulario

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './css/FromPerson.css';
+import '../css/From.css';
 
 class FormPerson extends Component {
 

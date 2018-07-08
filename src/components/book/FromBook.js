@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './css/FromBook.css';
+import '../css/From.css';
 
 class FromBook extends Component {
 
