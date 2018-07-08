@@ -23,6 +23,7 @@ class BookContainer extends Component {
         this.editRowBook = this.editRowBook.bind(this);
         this.deletRowBook = this.deletRowBook.bind(this);
     }
+    
     async handleAddBook() {
         //se crea un objeto local que se va a mandar al endPoint
         let object = {
