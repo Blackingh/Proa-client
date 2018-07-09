@@ -58,8 +58,11 @@ class BookContainer extends Component {
     }
 
     async deletRowBook(object) {
-        this.setState({id: object.id})
-        await deleteObject(this.state.url);
+        let url = {
+            url: '/book/',
+            id: object.id
+        }
+        await deleteObject(url);
         let index = await this.state.bookList.findIndex(book => book.id === object.id)
         this.state.bookList.splice(index, 1);
         this.defaultValues();

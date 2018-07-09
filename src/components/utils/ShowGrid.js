@@ -6,12 +6,13 @@ import PropTypes from 'prop-types';
 import '../css/ShowGrid.css'
 
 class ShowGrid extends Component {
-
+    
     handleInputEdit = (item) => {
         this.props.onEditRow(item);
     }
 
     handleInputDelete = (item) => {
+        console.log(item);
         if (window.confirm('¿Estas seguro de querer eliminar a la persona?')){
             this.props.onDeleteRow(item);
         }
