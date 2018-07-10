@@ -1,6 +1,6 @@
 export default [
     {
-        title: 'Home',
+        title: 'Inicio',
         url: '/'
     },
     {
@@ -12,7 +12,11 @@ export default [
         url: '/book'
     },
     {
-        title: 'Contact Us',
+        title: 'Alquiler',
+        url: '/rental'
+    },
+    {
+        title: 'Contactanos',
         url: '/contact'
     }
 ];

@@ -13,7 +13,7 @@ class BookContainer extends Component {
             title: '',
             author: '',
             url: {
-                url: '/book/',
+                url: "/book/",
                 id: ''
             },
             isDisableId: true
@@ -27,7 +27,6 @@ class BookContainer extends Component {
     async handleAddBook() {
         //se crea un objeto local que se va a mandar al endPoint
         let object = {
-            id: this.state.id,
             title: this.state.title,
             author: this.state.author,
         }

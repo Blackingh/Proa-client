@@ -1,0 +1,8 @@
+.Rental {
+    margin-top: 30px;
+    border-radius: 5px;
+    background-color:rgba(242, 242, 242, 0.9);
+    padding: 20px;
+    max-width: 100%;
+    font-family: 'Song Myung', serif;
+}

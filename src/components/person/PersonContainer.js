@@ -29,7 +29,7 @@ class PersonContainer extends Component {
             lastName: this.state.lastName,
             age: this.state.age
         }
-        const url = { url: '/person/' };
+        const url ="/person/";
         const person = await postObject(url, object);
         let newPersonList = this.state.personList;
         newPersonList.push(person);
@@ -59,7 +59,7 @@ class PersonContainer extends Component {
     }
 
     async deletRowPerson(object) {
-        const url = { url: '/person/', id: object.identification };
+        const url = { url: "/person/", id: object.identification };
         await deleteObject(url);
         let index = await this.state.personList.findIndex(person => person.identification === object.identification)
         this.state.personList.splice(index, 1);
@@ -74,7 +74,7 @@ class PersonContainer extends Component {
             lastName: this.state.lastName,
             age: this.state.age
         }
-        const url = { url: '/person/', id: object.identification };
+        const url = { url: "/person/", id: object.identification };
         let newPerson = await putObject(url, object);
         console.log(newPerson);
         let index = await this.state.personList.findIndex(person => person.identification === object.identification)
@@ -84,7 +84,7 @@ class PersonContainer extends Component {
         this.defaultValues();
     }
     async componentDidMount() {
-        const url = { url: '/person/' };
+        const url = { url: "/person/" };
         const array = await getAllObjects(url);
         this.setState({ personList: array });
     }

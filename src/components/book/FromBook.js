@@ -19,7 +19,7 @@ class FromBook extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-            <div className="row">
+                <div className="row">
                     <div className="col-25">
                         <label>id: </label>
                     </div>
@@ -30,7 +30,6 @@ class FromBook extends Component {
                             className="form-control "
                             disabled="false"
                             value={this.props.bookInpuntEdit.id}
-                            onChange={this.props.onGetEventRowForm}
                             placeholder="Autogenerado"
                         />
                     </div>
