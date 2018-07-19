@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
  * componentes
  */
 
-class ShowGridRental extends Component {
+class ShowGridReturnRental extends Component {
 
     render() {
         const { list } = this.props;
@@ -44,8 +44,8 @@ class ShowGridRental extends Component {
     }
 }
 
-ShowGridRental.propTypes = {
+ShowGridReturnRental.propTypes = {
     list: PropTypes.array.isRequired
 }
 
-export default ShowGridRental;
+export default ShowGridReturnRental;

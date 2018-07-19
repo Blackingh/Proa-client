@@ -1,9 +1,5 @@
 export default [
     {
-        title: 'Inicio',
-        url: '/'
-    },
-    {
         title: 'Personas',
         url: '/person'
     },
@@ -12,11 +8,11 @@ export default [
         url: '/book'
     },
     {
-        title: 'Alquiler',
+        title: 'Alquilar',
         url: '/rental'
     },
     {
-        title: 'Contactanos',
-        url: '/contact'
+        title: 'Return',
+        url: '/rental-return'
     }
 ];

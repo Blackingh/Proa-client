@@ -10,29 +10,32 @@ class RentalContainer extends Component {
         this.state = {
             arrayBook: [],
             arrayPerson: [],
-            rental: {
-                person: {
-                    identification: '',
-                    name: '',
-                    lastName: '',
-                    age: ''
-                },
-                book: [],
-                detail: '',
-                date: ''
-            }
-
+            person: {
+                identification: '',
+                name: '',
+                lastName: '',
+                age: ''
+            },
+            book: [],
+            detail: '',
+            date: '',
+            resetCheckbox: true 
         };
-        this.handleAddPerson = this.handleAddPerson.bind(this);
+        this.handleAddRental = this.handleAddRental.bind(this);
     }
 
-    async handleAddPerson(){
+    async handleAddRental(){
         const url ="/rental/";
-        const rental = await postObject(url,this.state.rental);
-        console.log(rental);
-        //Datos predeterminados
-        this.defaultValues();
-    }
+        let rental = {
+            person: this.state.person,
+            books: this.state.book,
+            dateReturn: this.state.date,
+            detail: this.state.detail
+        }
+        console.log(JSON.stringify(rental));
+        const rentalReturn = await postObject(url,rental);
+        console.log(rentalReturn);
+    }  
 
     async componentDidMount() {
         //carga personas
@@ -48,69 +51,60 @@ class RentalContainer extends Component {
     handleInputChange = (e) => {
         const { value, name } = e.target;
         console.log(value, name);
-        this.setState({ [name]: value });
+        this.setState({[name]: value});
     }
 
     handleInputPerson = (e) => {
         const { value } = e.target;
         console.log(value);
-        let id = parseInt(value);
+        let id = parseInt(value,10);
         let index = this.state.arrayPerson.findIndex(person => person.identification === id);
         let object = this.state.arrayPerson[index];
         this.setState({
-            rental: {
-                person: object
-            }
+            person: object
         },() => {
-            console.log(this.state.rental.person)})
+            console.log(this.state.person)})
         
     }
 
     toggleChange = (item) => {
         
-        let isGoing = this.state.rental.book.findIndex(book => book.id === item.id) >= 0;
-
-
+        let isGoing = this.state.book !== null? this.state.book.findIndex(book => book.id === item.id) !== -1 : false;
         if (!isGoing) {
-            let books = this.state.rental.book > 0 ? this.state.rental.book : [];
+            let books = this.state.book;
             books.push(item);
             this.setState({
-                rental: {
-                    book: books,
-                }
+                book: books,
             },() => {
-                console.log(this.state.rental.book)})
+                console.log(this.state.book)})
         }
         else {
-            let newArrayBook = this.state.rental.book.filter(function (el) {
+            let newArrayBook = this.state.book.filter((el) => {
                 return el.id !== item.id;
             });
             this.setState({
-                rental: {
-                    book: newArrayBook
-                }
+                book: newArrayBook
             },() => {
-                console.log(this.state.rental.book)})
+                console.log(this.state.book)})
         }
     }
 
     render() {
-
         return (
             <div className="rentalContainer">
                 <div className="row justify-content-md-center">
                     <div className="col">
                         <FormRental
-                            stateRental={this.state}
-                            onGetEventRowForm={this.handleInputChange}
-                            getPersonRentalId={this.handleInputPerson}
-                            onAddRental={this.handleAddPerson}
+                            stateRental={ this.state }
+                            onGetEventRowForm={ this.handleInputChange }
+                            getPersonRentalId={ this.handleInputPerson }
+                            onAddRental={ this.handleAddRental }
                         />
                     </div>
                     <div className="col">
                         <ShowGridRental
-                            list={this.state.arrayBook}
-                            onChangeBook={this.toggleChange}
+                            list={ this.state.arrayBook }
+                            onChangeBook={ this.toggleChange }
                         />
                     </div>
                 </div>

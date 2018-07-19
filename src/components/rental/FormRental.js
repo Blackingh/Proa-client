@@ -40,7 +40,6 @@ class FormRental extends Component {
                             className="form-control"
                             value={this.props.stateRental.date}
                             onChange={this.props.onGetEventRowForm}
-                            autoComplete="off"
                             required
                         />
                     </div>

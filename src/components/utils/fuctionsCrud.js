@@ -3,7 +3,6 @@ const localHost = 'http://localhost:8080';
 
 export const postObject = async function(url,data){
     try {
-        console.log(data);
         let response = await fetch(`${localHost}${url}`, {
             method: 'POST',
             body: JSON.stringify(data),
@@ -63,6 +62,23 @@ export const deleteObject = async function(url){
     try {
         let response = await fetch(`${localHost}${url.url}${url.id}`, {
             method: 'DELETE',
+        });
+        let menssageJson = await response.statusText;
+        console.log(menssageJson);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deleteListObject = async function(url,data){
+    try {
+        let response = await fetch(`${localHost}${url.url}${url.id}`, {
+            method: 'DELETE',
+            body: JSON.stringify(data),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
         });
         let menssageJson = await response.statusText;
         console.log(menssageJson);

@@ -28,7 +28,7 @@ class BookContainer extends Component {
         //se crea un objeto local que se va a mandar al endPoint
         let object = {
             title: this.state.title,
-            author: this.state.author,
+            author: this.state.author
         }
         const book = await postObject(this.state.url.url, object);
         let newBookList = this.state.bookList;

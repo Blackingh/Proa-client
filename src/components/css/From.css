@@ -16,7 +16,7 @@ input[type=text]{
   
   /* Style the submit button */
     .button {
-    background-color: #48B881;
+    background-color: #2ECC71;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -64,3 +64,24 @@ input[type=text]{
     height: 30px;
     margin: 10px auto;
   }
+
+
+/* Create a custom checkbox */
+.checkmark {
+    margin: 0 auto;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+}
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.bottonReturn{
+  margin: 20px;
+}

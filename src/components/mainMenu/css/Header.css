@@ -6,7 +6,7 @@
 .Menu ul {
     color: white;
     margin-top: 10px;
-    background-color: #0084ff;
+    background-color: #E74C3C;
     list-style: none;
     margin: 0px;    
     padding: 0px;
@@ -28,7 +28,7 @@
 }
 
 .Menu ul li a:hover {
-    background-color: #f57d00;
+    background-color: #641E16;
 }
 
 .title {
